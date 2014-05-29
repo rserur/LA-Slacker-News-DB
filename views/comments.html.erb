@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Slacker News</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
   </head>
 
   <body>
@@ -42,7 +42,9 @@
 
         <li>
           <div class="arrow"></div>
-          <span class="comment-info"><a href="#"><%= comment["username"]</a> <%= comment["created_at"] %> <a href="#">link</a></span>
+          <span class="comment-info">
+            <a href="#"><%= comment["username"] %></a> <%= comment["created_at"] %> <a href="#">link</a>
+          </span>
           <p><%= comment["contents"] %></p>
         </li>
 

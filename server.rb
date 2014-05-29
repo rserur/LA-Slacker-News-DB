@@ -18,6 +18,17 @@ def submit_article(url, title, description)
   connection.close
 end
 
+def get_comments(article)
+  sql = "SELECT comments.id, comments.article_id, comments.user_id, comments.contents AS contents,
+    comments.created_at AS created_at, users.name AS username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.article_id = $1"
+  connection = PG.connect(dbname: 'slacker_news')
+  results = connection.exec(sql, [article])
+  connection.close
+
+  results
+end
+
+
 # URL validation method found @ http://stackoverflow.com/questions/7167895/whats-a-good-way-to-validate-links-urls-in-rails-3
 def valid?(uri)
   !!URI.parse(uri)
@@ -25,7 +36,7 @@ rescue URI::InvalidURIError
   false
 end
 
-get '/' do
+get '/articles' do
 
   @news = get_articles
 
@@ -74,5 +85,13 @@ post '/x' do
 
     redirect '/'
   end
+
+end
+
+get '/articles/:article_id/comments' do
+
+  @comments = get_comments(params[:article_id])
+
+  erb :'comments.html'
 
 end
