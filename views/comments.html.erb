@@ -36,9 +36,11 @@
         </li>
         <% end %>
       </ul>
-      <form>
-        <textarea rows="6" cols="60"></textarea><br/>
-        <button type="button">add comment</button>
+      <form action="<%= url("articles/#{@news[0]['id']}/comments") %>" method="post">
+        <label for "username">Username:</label>
+        <input type="text" id="username" name="username" />
+        <textarea rows="6" cols="60" id="contents" name="contents"></textarea><br/>
+        <input type="submit" value="submit">
       </form>
       <ul id="comments">
       <% @comments.each do |comment| %>

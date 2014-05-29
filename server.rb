@@ -2,6 +2,7 @@ require 'sinatra'
 require 'json'
 require 'uri'
 require 'pg'
+require 'pry'
 
 def get_articles
   connection = PG.connect(dbname: 'slacker_news')
@@ -15,6 +16,17 @@ def submit_article(url, title, description)
   sql = "INSERT INTO articles (url, title, description, created_at)" + "VALUES ($1, $2, $3, NOW())"
   connection = PG.connect(dbname: 'slacker_news')
   connection.exec_params(sql, [url, title, description])
+  connection.close
+end
+
+def submit_comment(article, username, contents)
+  user_sql = "INSERT INTO users (name) VALUES ($1)"
+  comment_sql = "INSERT INTO comments (article_id, user_id, contents, created_at)" + "VALUES ($1, $2, $3, NOW())"
+  connection = PG.connect(dbname: 'slacker_news')
+  connection.exec_params(user_sql, [username])
+  user_id = connection.exec('SELECT id FROM users WHERE name = $1', [username])
+
+  connection.exec_params(comment_sql, [article.to_i, user_id[0]["id"], contents])
   connection.close
 end
 
@@ -94,6 +106,18 @@ post '/x' do
 
     redirect '/'
   end
+
+end
+
+post '/articles/:article_id/comments' do
+
+  @article = params[:article_id]
+  @username = params[:username]
+  @contents = params[:contents]
+
+  submit_comment(@article, @username, @contents)
+
+  redirect "articles/#{@article}/comments"
 
 end
 
