@@ -37,6 +37,7 @@
         <% end %>
       </ul>
       <form action="<%= url("articles/#{@news[0]['id']}/comments") %>" method="post">
+      <div class="message"><%= @message %></div>
         <label for "username">Username:</label>
         <input type="text" id="username" name="username" />
         <textarea rows="6" cols="60" id="contents" name="contents"></textarea><br/>
@@ -44,7 +45,6 @@
       </form>
       <ul id="comments">
       <% @comments.each do |comment| %>
-
         <li>
           <div class="arrow"></div>
           <span class="comment-info">

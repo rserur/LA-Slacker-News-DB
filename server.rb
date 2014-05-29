@@ -111,13 +111,25 @@ end
 
 post '/articles/:article_id/comments' do
 
+  @news = get_single_article(params[:article_id])
+  @comments = get_comments(params[:article_id])
   @article = params[:article_id]
   @username = params[:username]
   @contents = params[:contents]
 
-  submit_comment(@article, @username, @contents)
+  if @contents == ""
 
-  redirect "articles/#{@article}/comments"
+    @message = "Please write in a comment."
+
+    erb :'comments.html'
+
+  else
+
+    submit_comment(@article, @username, @contents)
+
+    redirect "articles/#{@article}/comments"
+
+  end
 
 end
 
