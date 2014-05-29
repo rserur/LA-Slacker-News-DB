@@ -18,9 +18,18 @@ def submit_article(url, title, description)
   connection.close
 end
 
+def get_single_article(article)
+  sql = "SELECT * FROM articles WHERE id = $1"
+  connection = PG.connect(dbname: 'slacker_news')
+  results = connection.exec(sql, [article])
+  connection.close
+
+  results
+end
 def get_comments(article)
   sql = "SELECT comments.id, comments.article_id, comments.user_id, comments.contents AS contents,
-    comments.created_at AS created_at, users.name AS username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.article_id = $1"
+    comments.created_at AS created_at, users.name AS username FROM comments
+    JOIN users ON comments.user_id = users.id WHERE comments.article_id = $1"
   connection = PG.connect(dbname: 'slacker_news')
   results = connection.exec(sql, [article])
   connection.close
@@ -89,6 +98,8 @@ post '/x' do
 end
 
 get '/articles/:article_id/comments' do
+
+  @news = get_single_article(params[:article_id])
 
   @comments = get_comments(params[:article_id])
 

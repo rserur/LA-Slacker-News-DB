@@ -32,7 +32,7 @@
           <a href="<%= url("#{article['url']}") %>" target="_blank"><%= article["title"] %></a>
           <span class="domain">(domain.com)</span>
           <span class="description"><%= article["description"] %></span>
-          <div class="stats">63 points by lyime 56 minutes ago | 17 <a href="comments.html">comments</a></div>
+          <div class="stats">63 points by lyime 56 minutes ago | 17 <a href="<%= url("articles/#{article['id']}/comments") %>">comments</a></div>
         </li>
         <% end %>
       </ol>
