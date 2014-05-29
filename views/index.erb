@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Slacker News</title>
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+
+  <div id="container">
+
+    <header>
+      <div id="Y">Y</div>
+      <h1><a href="/">Slacker News</a></h1>
+        <ul>
+          <li><a href="#">new</a></li>
+          <li><a href="#">comments</a></li>
+          <li><a href="#">ask</a></li>
+          <li><a href="#">jobs</a></li>
+          <li><a href="/x">submit</a></li>
+        </ul>
+      <div id="login">login</div>
+    </header>
+
+    <div class="articles">
+      <ol>
+        <% @news.each do |article|%>
+        <li>
+          <div class="arrow"></div>
+          <a href="<%= url("#{article['url']}") %>" target="_blank"><%= article["title"] %></a>
+          <span class="domain">(domain.com)</span>
+          <span class="description"><%= article["description"] %></span>
+          <div class="stats">63 points by lyime 56 minutes ago | 17 <a href="comments.html">comments</a></div>
+        </li>
+        <% end %>
+      </ol>
+    </div>
+
+    <footer>
+      <ul>
+        <li><a href="#">Lists</a></li>
+        <li><a href="#">RSS</a></li>
+        <li><a href="#">Bookmarklet</a></li>
+        <li><a href="#">Guidelines</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">DMCA</a></li>
+        <li><a href="#">News News</a></li>
+        <li><a href="#">Feature Requests</a></li>
+        <li><a href="#">Bugs</a></li>
+        <li><a href="#">Y Combinator</a></li>
+        <li><a href="#">Apply</a></li>
+        <li><a href="#">Library</a></li>
+      </ul>
+      <form>
+        <label for="search">Search:</label>
+        <input type="text" id ="search">
+      </form>
+    </footer>
+
+  </div>
+
+  </body>
+
+</html>

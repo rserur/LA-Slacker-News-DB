@@ -1,0 +1,178 @@
+* {
+  font-size: 62.5%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Verdana, Helvetica, sans-serif;
+}
+
+#container {
+  width: 85%;
+  margin: 1em auto;
+  background-color: #F6F6EF;
+}
+
+a:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+header {
+  background-color: #FF6600;
+  padding: 4px;
+  margin-bottom: 1em;
+
+}
+
+#Y {
+  float: left;
+  font-size: 6.5em;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  padding: 0 3px;
+  margin-right: 5px;
+}
+
+header h1 {
+  float: left;
+  font-size: 8em;
+  margin-right: .5em;
+  margin-top: -.15em;
+}
+
+header a, footer a, header a:visited {
+  color: #000000;
+}
+
+header ul , footer ul{
+  list-style-type: none;
+  font-size: 6.8em;
+}
+
+header li, footer li {
+  display: inline;
+}
+
+header li:after, footer li:after {
+  content: "|";
+  padding-left: 5px;
+}
+
+#login {
+  float: right;
+  margin-top: -15px;
+  margin-right: 2px;
+  font-size: 5em;
+}
+
+.articles {
+  color: #989896;
+  font-size: 8.5em;
+  padding-left: .8em;
+}
+
+.articles a {
+  color: #000000;
+  font-size: inherit;
+}
+
+.stats a {
+  color: #989896;
+}
+
+.articles a:visited {
+  color: #989896;
+}
+
+.domain {
+  font-size: .8em;
+}
+
+.articles ul {
+  list-style-type: none;
+}
+
+.articles li {
+padding: .5% 0;
+}
+
+.arrow {
+  background-image: url(grayarrow.gif);
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin-left: -10px;
+  margin-top: 2px;
+}
+
+#comments .arrow {
+  margin-top: 10px;
+}
+
+#comments {
+  color: #000000;
+  font-size: .95em;
+}
+
+#comments p {
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+
+.comment-info a {
+  color: #989896;
+}
+
+.comment-info {
+  color: #989896;
+}
+
+.reply-1 {
+  margin-left: 2em;
+  margin-top: -.8em;
+}
+
+.reply-2 {
+  margin-left: 4em;
+  margin-top: -.8em;
+}
+
+/*Start Submit Form*/
+
+button {
+  height: 1.5em;
+  width: 8em;
+  margin-bottom: 2em;
+  font-size: .6em;
+}
+
+textarea {
+  margin: 1em 0;
+}
+
+.message {
+  color: #FF0000;
+  font-size: .4em;
+}
+/*End Submit Form*/
+
+strong {
+  font-size: inherit;
+}
+
+footer {
+  text-align: center;
+  height: 10em;
+  border-top: 2px solid #FF6600;
+  padding-top: 2em;
+  margin-top: 2em;
+}
+
+footer form {
+  padding: .5em;
+  color: #989896;
+  font-size: 8em;
+}
